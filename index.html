@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensys</title>
+    <meta name="description" content="Nexventures brings Innovative Solutions. Transforming ideas into digital reality. We craft cutting-edge applications that drive business growth.">
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #111827;
+            color: white;
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+        }
+
+        /* Light mode styles */
+        body.light-mode {
+            background: #1b2335;
+            color: #e5e7eb;
+        }
+
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .min-h-screen { min-height: 100vh; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .flex-grow { flex-grow: 1; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .h-screen { height: 100vh; }
+        .overflow-hidden { overflow: hidden; }
+        .transition-all { transition: all 0.3s ease; }
+        .duration-300 { transition-duration: 300ms; }
+        .duration-500 { transition-duration: 500ms; }
+        .duration-1000 { transition-duration: 1000ms; }
+        .bg-gray-900 { background-color: #111827; }
+        .text-black { color: #000; }
+        .text-white { color: white; }
+        .text-base { font-size: 1rem; }
+        .z-10 { z-index: 10; }
+        .z-20 { z-index: 20; }
+        .z-30 { z-index: 30; }
+        .z-50 { z-index: 50; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        .hidden { display: none; }
+
+        /* Text size classes */
+        body.text-small { font-size: 14px; }
+        body.text-normal { font-size: 16px; }
+        body.text-large { 
+            font-size: 18px; 
+        }
+        body.text-large .hero-title-main { font-size: clamp(3rem, 9vw, 5rem); }
+        body.text-large .hero-title-sub { font-size: clamp(2rem, 5vw, 3rem); }
+        body.text-large .hero-description { font-size: clamp(1.5rem, 4vw, 2rem); }
+        body.text-large .hero-badge { font-size: 1rem; }
+        body.text-large .btn-primary,
+        body.text-large .btn-secondary { font-size: 1.125rem; }
+
+        /* Background Images */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0a0f1c 100%);
+            transition: all 0.5s ease;
+        }
+
+        body.light-mode .hero-section {
+            background: linear-gradient(135deg, #242f47 0%, #1e293b 50%, #0f172a 100%);
+        }
+
+        /* Moving Background Images */
+        .bg-images {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .bg-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .bg-image.active {
+            opacity: 0.3;
+        }
+
+        body.light-mode .bg-image.active {
+            opacity: 0.2;
+        }
+
+        .bg-image-1 {
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .bg-image-2 {
+            background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .bg-image-3 {
+            background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .bg-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            background: linear-gradient(to bottom right, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+            transition: all 0.5s ease;
+        }
+
+        body.light-mode .bg-overlay {
+            background: linear-gradient(to bottom right, rgba(36,47,71,0.6), rgba(36,47,71,0.4), rgba(36,47,71,0.2));
+        }
+
+        /* Top Controls */
+        .top-controls-right {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 30;
+        }
+        .top-controls-left {
+            position: fixed;
+            top: 1.25rem;
+            left: 1.25rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 30;
+        }
+        .control-btn {
+            padding: 0.75rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.light-mode .control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #e5e7eb;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        body.light-mode .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Accessibility Panel */
+        .accessibility-panel {
+            position: fixed;
+            top: 5rem;
+            right: 1.25rem;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #1f2937;
+            min-width: 200px;
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-panel.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        body.light-mode .accessibility-panel {
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .accessibility-panel h3 {
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .accessibility-panel .option {
+            margin-bottom: 0.5rem;
+        }
+
+        .accessibility-panel label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+            color: #6b7280;
+        }
+
+        .accessibility-panel select {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #374151;
+            font-size: 0.875rem;
+        }
+
+        /* Bottom Pagination */
+        .pagination {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 30;
+        }
+        .pagination-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .pagination-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .pagination-dot.active {
+            background: white;
+            transform: scale(1.25);
+        }
+
+        body.light-mode .pagination-dot {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        body.light-mode .pagination-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        body.light-mode .pagination-dot.active {
+            background: #ffffff;
+        }
+
+        /* Main Content */
+        .hero-content {
+            position: relative;
+            z-index: 20;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+        .hero-content-inner {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+
+        /* Badge */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background: rgba(149, 35, 1, 0.2);
+            color: #fdefeb;
+            border: 1px solid #e75629;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.5s ease;
+        }
+
+        body.light-mode .hero-badge {
+            background: rgba(149, 35, 1, 0.3);
+            color: #fdefeb;
+            border-color: #d97706;
+        }
+
+        .hero-badge svg {
+            width: 1em;
+            height: 1em;
+        }
+
+        /* Main Heading */
+        .hero-title {
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white;
+            transition: color 0.5s ease;
+        }
+
+        body.light-mode .hero-title {
+            color: #e5e7eb;
+        }
+
+        .hero-title-main {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            display: block;
+            transition: opacity 0.5s ease;
+        }
+        .hero-title-sub {
+            display: block;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #fc4b15;
+            margin-top: 0.5rem;
+            transition: opacity 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode .hero-title-sub {
+            color: #f87171;
+        }
+
+        .hero-description {
+            margin-bottom: 2rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            color: #e5e7eb;
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
+            transition: opacity 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode .hero-description {
+            color: #d1d5db;
+        }
+
+        /* Buttons */
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            background: linear-gradient(to right, #952301, #611701);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 10px 25px rgba(149, 35, 1, 0.3);
+            transform: translateY(-2px);
+        }
+        .btn-primary svg {
+            width: 1em;
+            height: 1em;
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        body.light-mode .btn-secondary {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #e5e7eb;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        body.light-mode .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Floating Circles Animation */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .floating-circle {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            animation: float 8s ease-in-out infinite;
+            transition: all 0.5s ease;
+        }
+
+        body.light-mode .floating-circle {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 15%;
+            left: 10%;
+            background: rgba(100, 200, 255, 0.05);
+            animation-delay: 0s;
+        }
+        .floating-circle:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            right: 15%;
+            background: rgba(255, 100, 150, 0.05);
+            animation-delay: 2s;
+        }
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            left: 8%;
+            background: rgba(150, 255, 100, 0.05);
+            animation-delay: 4s;
+        }
+        .floating-circle:nth-child(4) {
+            width: 140px;
+            height: 140px;
+            bottom: 15%;
+            right: 10%;
+            background: rgba(255, 200, 100, 0.05);
+            animation-delay: 1s;
+        }
+        .floating-circle:nth-child(5) {
+            width: 90px;
+            height: 90px;
+            top: 50%;
+            right: 5%;
+            background: rgba(200, 100, 255, 0.05);
+            animation-delay: 3s;
+        }
+        .floating-circle:nth-child(6) {
+            width: 110px;
+            height: 110px;
+            top: 60%;
+            left: 15%;
+            background: rgba(100, 255, 200, 0.05);
+            animation-delay: 5s;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(0px) rotate(180deg);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-15px) rotate(270deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .top-controls-left,
+            .top-controls-right {
+                gap: 0.25rem;
+            }
+            .control-btn {
+                padding: 0.5rem;
+                width: 40px;
+                height: 40px;
+            }
+            .floating-circle {
+                display: none;
+            }
+            .accessibility-panel {
+                right: 0.5rem;
+                left: 0.5rem;
+                min-width: auto;
+            }
+        }
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .animate-fade-in-delay-1 {
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .animate-fade-in-delay-2 {
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .animate-fade-in-delay-3 {
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Smooth text transition */
+        .hero-badge,
+        .hero-title-main,
+        .hero-title-sub,
+        .hero-description,
+        .hero-buttons {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-normal">
+    <div class="flex flex-col min-h-screen relative">
+        <main class="flex-grow">
+            <div class="min-h-screen bg-gray-900 text-black text-base transition-all duration-500">
+                <!-- Accessibility Panel -->
+                <div id="accessibilityPanel" class="accessibility-panel">
+                    <h3>Accessibility Options</h3>
+                    <div class="option">
+                        <label for="textSize">Text Size:</label>
+                        <select id="textSize">
+                            <option value="text-small">Small Text</option>
+                            <option value="text-normal" selected>Normal Text</option>
+                            <option value="text-large">Large Text</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <!-- Moving Background Images -->
+                    <div class="bg-images">
+                        <div class="bg-image bg-image-1 active"></div>
+                        <div class="bg-image bg-image-2"></div>
+                        <div class="bg-image bg-image-3"></div>
+                    </div>
+
+                    <!-- Background Overlay -->
+                    <div class="bg-overlay"></div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="floating-elements">
+                        <div class="floating-circle"></div>
+                        <div class="floating-circle"></div>
+                        <div class="floating-circle"></div>
+                        <div class="floating-circle"></div>
+                        <div class="floating-circle"></div>
+                        <div class="floating-circle"></div>
+                    </div>
+                    
+                    <!-- Top Right Controls -->
+                    <div class="top-controls-right">
+                        <button id="accessibilityBtn" class="control-btn" title="Accessibility Options">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="20" width="20">
+                                <path d="M423.9 255.8L411 413.1c-3.3 40.7-63.9 35.1-60.6-4.9l10-122.5-41.1 2.3c10.1 20.7 15.8 43.9 15.8 68.5 0 41.2-16.1 78.7-42.3 106.5l-39.3-39.3c57.9-63.7 13.1-167.2-74-167.2-25.9 0-49.5 9.9-67.2 26L73 243.2c22-20.7 50.1-35.1 81.4-40.2l75.3-85.7-42.6-24.8-51.6 46c-30 26.8-70.6-18.5-40.5-45.4l68-60.7c9.8-8.8 24.1-10.2 35.5-3.6 0 0 139.3 80.9 139.5 81.1 16.2 10.1 20.7 36 6.1 52.6L285.7 229l106.1-5.9c18.5-1.1 33.6 14.4 32.1 32.7zm-64.9-154c28.1 0 50.9-22.8 50.9-50.9C409.9 22.8 387.1 0 359 0c-28.1 0-50.9 22.8-50.9 50.9 0 28.1 22.8 50.9 50.9 50.9zM179.6 456.5c-80.6 0-127.4-90.6-82.7-156.1l-39.7-39.7C36.4 287 24 320.3 24 356.4c0 130.7 150.7 201.4 251.4 122.5l-39.7-39.7c-16 10.9-35.3 17.3-56.1 17.3z"></path>
+                            </svg>
+                        </button>
+                        <button id="themeToggle" class="control-btn" title="Switch to light mode">
+                            <svg id="darkIcon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" height="20" width="20">
+                                <path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-175.5s78.8-175.5 175.5-175.5c10.3 0 20.3 .9 30.1 2.6c6.9 1.2 13.8-2.3 17-8.5s1.9-13.8-3.1-18.7C339 56.2 284.1 32 223.5 32z"></path>
+                            </svg>
+                            <svg id="lightIcon" class="hidden" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="20" width="20">
+                                <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Top Left Controls -->
+                    <div class="top-controls-left">
+                        <button class="control-btn" title="Pause">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16">
+                                <path d="M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z"></path>
+                            </svg>
+                        </button>
+                        <button class="control-btn" title="Mute">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="16" width="16">
+                                <path d="M215.03 71.05L126.06 160H24c-13.26 0-24 10.74-24 24v144c0 13.25 10.74 24 24 24h102.06l88.97 88.95c15.03 15.03 40.97 4.47 40.97-16.97V88.02c0-21.46-25.96-31.98-40.97-16.97zM461.64 256l45.64-45.64c6.3-6.3 6.3-16.52 0-22.82l-22.82-22.82c-6.3-6.3-16.52-6.3-22.82 0L416 210.36l-45.64-45.64c-6.3-6.3-16.52-6.3-22.82 0l-22.82 22.82c-6.3 6.3-6.3 16.52 0 22.82L370.36 256l-45.63 45.63c-6.3 6.3-6.3 16.52 0 22.82l22.82 22.82c6.3 6.3 16.52 6.3 22.82 0L416 301.64l45.64 45.64c6.3 6.3 16.52 6.3 22.82 0l22.82-22.82c6.3-6.3 6.3-16.52 0-22.82L461.64 256z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Pagination Dots -->
+                    <div class="pagination">
+                        <button class="pagination-dot" data-image="0"></button>
+                        <button class="pagination-dot active" data-image="1"></button>
+                        <button class="pagination-dot" data-image="2"></button>
+                    </div>
+                    
+                    <!-- Main Hero Content -->
+                    <div class="hero-content">
+                        <div class="hero-content-inner">
+                            <!-- Badge -->
+                            <span class="hero-badge animate-fade-in" id="heroBadge">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em">
+                                    <path d="M247 18.656c-80.965 0-146.875 65.02-146.875 145.625 0 45.63 15.758 67 33.313 94.845 11.706 18.57 23.767 39.91 30.53 70.563h165.095c6.728-31.387 18.91-53.12 30.718-71.875 17.58-27.92 33.314-48.912 33.314-93.532 0-80.66-65.127-145.624-146.094-145.624zm-99.78 127.906L170.437 167 210 201.813l31.188-34.125 6.78-7.438 6.907 7.344 30.75 32.72 39.97-33.47 22.686-19-7.655 28.594L304.75 310.28l-18.063-4.842 28.22-105.25-24.032 20.125-6.78 5.656-6.033-6.44-29.906-31.78-30.562 33.438-6.188 6.78-6.875-6.062-23.25-20.437 27.94 104.218-18.064 4.812-35.937-134.063-8-29.875zm22.593 201.813V389.5L315 348.375H169.812zm153.593 17.063l-153.594 43.53v29.438l153.594-43.5v-29.47zm0 48.875L203.97 448.156h119.436v-33.844zm-132.562 52.53v20.533h113.282v-20.53h-113.28z"></path>
+                                </svg>
+                                Innovative Solutions
+                            </span>
+                            <!-- Main Heading -->
+                            <h1 class="hero-title animate-fade-in-delay-1">
+                                <span class="hero-title-main" id="heroTitleMain">Transforming Ideas into</span>
+                                <span class="hero-title-sub" id="heroTitleSub">Digital Reality</span>
+                            </h1>
+                            <!-- Description -->
+                            <p class="hero-description animate-fade-in-delay-2" id="heroDescription">
+                                We craft cutting-edge applications that drive business growth, delivering innovative solutions tailored to your needs.
+                            </p>
+                            <!-- Buttons -->
+                            <div class="hero-buttons animate-fade-in-delay-3">
+                                <a href="about.html" class="btn-primary">
+                                    Connect with us
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em">
+                                        <path d="M190.5 66.9c9.4-9.4 24.6-9.4 33.9 0L353.7 196.3c9.4 9.4 9.4 24.6 0 33.9L224.4 359.6c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L287.1 229H64c-13.3 0-24-10.7-24-24s10.7-24 24-24h223.1L190.5 100.9c-9.4-9.4-9.4-24.6 0-33.9z"></path>
+                                    </svg>
+                                </a>
+                                <a href="#learn-more" class="btn-secondary">
+                                    View portfolio
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em">
+                                        <path d="M432 256c0 17.7-14.3 32-32 32H112c-17.7 0-32-14.3-32-32s14.3-32 32-32h288c17.7 0 32 14.3 32 32z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const darkIcon = document.getElementById('darkIcon');
+        const lightIcon = document.getElementById('lightIcon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            darkIcon.classList.add('hidden');
+            lightIcon.classList.remove('hidden');
+            themeToggle.setAttribute('title', 'Switch to dark mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+                themeToggle.setAttribute('title', 'Switch to dark mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+                themeToggle.setAttribute('title', 'Switch to light mode');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Accessibility panel functionality
+        const accessibilityBtn = document.getElementById('accessibilityBtn');
+        const accessibilityPanel = document.getElementById('accessibilityPanel');
+        const textSizeSelect = document.getElementById('textSize');
+
+        accessibilityBtn.addEventListener('click', () => {
+            accessibilityPanel.classList.toggle('show');
+        });
+
+        // Close accessibility panel when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!accessibilityBtn.contains(e.target) && !accessibilityPanel.contains(e.target)) {
+                accessibilityPanel.classList.remove('show');
+            }
+        });
+
+        // Text size functionality
+        textSizeSelect.addEventListener('change', (e) => {
+            const newSize = e.target.value;
+            body.classList.remove('text-small', 'text-normal', 'text-large');
+            body.classList.add(newSize);
+            localStorage.setItem('textSize', newSize);
+        });
+
+        // Load saved text size
+        const savedTextSize = localStorage.getItem('textSize') || 'text-normal';
+        textSizeSelect.value = savedTextSize;
+        body.classList.remove('text-small', 'text-normal', 'text-large');
+        body.classList.add(savedTextSize);
+
+        // Background image and text rotation functionality
+        const bgImages = document.querySelectorAll('.bg-image');
+        const paginationDots = document.querySelectorAll('.pagination-dot');
+        const heroBadge = document.getElementById('heroBadge');
+        const heroTitleMain = document.getElementById('heroTitleMain');
+        const heroTitleSub = document.getElementById('heroTitleSub');
+        const heroDescription = document.getElementById('heroDescription');
+        const heroButtons = document.querySelector('.hero-buttons');
+        let currentImageIndex = 0;
+
+        const contentData = [
+            {
+                badge: 'Innovative Solutions',
+                titleMain: 'Transforming Ideas into',
+                titleSub: 'Digital Reality',
+                description: 'We craft cutting-edge applications that drive business growth, delivering innovative solutions tailored to your needs.'
+            },
+            {
+                badge: 'Empowering Businesses',
+                titleMain: 'Building the Future',
+                titleSub: 'With Technology',
+                description: 'Our solutions empower businesses to thrive in a digital world with scalable, efficient, and innovative applications.'
+            },
+            {
+                badge: 'Creative Excellence',
+                titleMain: 'Innovate, Create,',
+                titleSub: 'Succeed',
+                description: 'Unleash your potential with our creative and technical expertise, turning visions into successful realities.'
+            }
+        ];
+
+        function switchToImage(index) {
+            // Remove active class from all images and dots
+            bgImages.forEach(img => img.classList.remove('active'));
+            paginationDots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current image and dot
+            bgImages[index].classList.add('active');
+            paginationDots[index].classList.add('active');
+            
+            // Smooth text transition
+            const elements = [heroBadge, heroTitleMain, heroTitleSub, heroDescription, heroButtons];
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(10px)';
+            });
+
+            setTimeout(() => {
+                heroBadge.textContent = contentData[index].badge;
+                heroBadge.prepend(heroBadge.querySelector('svg')); // Re-add SVG
+                heroTitleMain.textContent = contentData[index].titleMain;
+                heroTitleSub.textContent = contentData[index].titleSub;
+                heroDescription.textContent = contentData[index].description;
+
+                elements.forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }, 500);
+            
+            currentImageIndex = index;
+        }
+
+        function nextImage() {
+            const nextIndex = (currentImageIndex + 1) % bgImages.length;
+            switchToImage(nextIndex);
+        }
+
+        // Auto-rotate images every 5 seconds
+        let imageRotationInterval = setInterval(nextImage, 5000);
+
+        // Pagination dot click handlers
+        paginationDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                switchToImage(index);
+                // Reset the interval when user manually switches
+                clearInterval(imageRotationInterval);
+                imageRotationInterval = setInterval(nextImage, 5000);
+            });
+        });
+
+        // Pause/resume functionality
+        const pauseBtn = document.querySelector('.top-controls-left .control-btn');
+        let isPaused = false;
+
+        pauseBtn.addEventListener('click', () => {
+            if (isPaused) {
+                imageRotationInterval = setInterval(nextImage, 5000);
+                pauseBtn.innerHTML = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="16" width="16"><path d="M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z"></path></svg>';
+                pauseBtn.setAttribute('title', 'Pause');
+                isPaused = false;
+            } else {
+                clearInterval(imageRotationInterval);
+                pauseBtn.innerHTML = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" height="16" width="16"><path d="M73 39c-14.8-9.1-33.4-4.6-41.6 10.2s-4.6 33.4 10.2 41.6l256 160c10.7 6.7 24.2 6.7 34.9 0l256-160c14.8-9.1 19.3-27.8 10.2-41.6s-27.8-19.3-41.6-10.2L288 214.3 73 39z"></path></svg>';
+                pauseBtn.setAttribute('title', 'Resume');
+                isPaused = true;
+            }
+        });
+    </script>
+</body>
+</html>
