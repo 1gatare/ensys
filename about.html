@@ -1,0 +1,2867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Ensys</title>
+    <meta name="description" content="Learn about Nexventures - your digital transformation partners committed to turning your vision into reality.">
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #111827;
+            color: white;
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .min-h-screen { min-height: 100vh; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .overflow-hidden { overflow: hidden; }
+        .transition-all { transition: all 0.3s ease; }
+        .z-10 { z-index: 10; }
+        .z-20 { z-index: 20; }
+        .z-30 { z-index: 30; }
+        .z-50 { z-index: 50; }
+        .hidden { display: none; }
+
+        /* Text size classes */
+        body.text-small { font-size: 14px; }
+        body.text-small .hero-title { font-size: clamp(2rem, 6vw, 3.2rem) !important; }
+        body.text-small .hero-subtitle { font-size: clamp(0.9rem, 2.2vw, 1.1rem) !important; }
+        body.text-small .location-badge { font-size: 0.7rem !important; padding: 0.4rem 0.8rem !important; }
+        body.text-small .btn-primary { font-size: 0.8rem !important; padding: 0.8rem 1.6rem !important; }
+        body.text-small .nav-link { font-size: 0.8rem !important; }
+        body.text-small .stat-title { font-size: 0.9rem !important; }
+        body.text-small .stat-number { font-size: 1.2rem !important; }
+
+        body.text-normal { font-size: 16px; }
+        
+        body.text-large { font-size: 20px; }
+        body.text-large .hero-title { font-size: clamp(3.2rem, 10vw, 6rem) !important; }
+        body.text-large .hero-subtitle { font-size: clamp(1.4rem, 4vw, 2rem) !important; line-height: 1.6 !important; }
+        body.text-large .location-badge { font-size: 1.1rem !important; padding: 0.6rem 1.4rem !important; }
+        body.text-large .btn-primary { font-size: 1.2rem !important; padding: 1.2rem 2.4rem !important; }
+        body.text-large .nav-link { font-size: 1.1rem !important; }
+        body.text-large .stat-title { font-size: 1.4rem !important; }
+        body.text-large .stat-number { font-size: 2rem !important; }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            transition: all 0.5s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: rgb(149, 35, 1);
+            text-decoration: none;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 0.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: rgb(149, 35, 1);
+        }
+
+        .nav-link.active {
+            color: rgb(149, 35, 1);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .control-btn {
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .btn-contact {
+            background: linear-gradient(to right, #952301, #611701);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-contact:hover {
+            box-shadow: 0 10px 25px rgba(149, 35, 1, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0a0f1c 100%);
+            transition: all 0.5s ease;
+        }
+
+        /* Background Image */
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+            z-index: 2;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 3;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 15%;
+            background: rgba(100, 200, 255, 0.05);
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            background: rgba(255, 100, 150, 0.05);
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 25%;
+            left: 8%;
+            background: rgba(150, 255, 100, 0.05);
+            animation-delay: 4s;
+        }
+
+        .floating-circle:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 15%;
+            right: 25%;
+            background: rgba(255, 200, 100, 0.05);
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-15px) rotate(90deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(0px) rotate(180deg);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-10px) rotate(270deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            max-width: 1000px;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: white;
+            
+            text-align: center;
+        }
+        .hero-title span {
+  color:  rgb(149, 35, 1); /* Strong red for Ensys */
+
+}
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: #e5e7eb;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #1f2937;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Accessibility Panel */
+        .accessibility-panel {
+            position: fixed;
+            top: 5rem;
+            right: 1.25rem;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #1f2937;
+            min-width: 200px;
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-panel.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .accessibility-panel h3 {
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .accessibility-panel .option {
+            margin-bottom: 0.5rem;
+        }
+
+        .accessibility-panel label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+            color: #6b7280;
+        }
+
+        .accessibility-panel select {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #374151;
+            font-size: 0.875rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            position: relative;
+            padding: 2rem 2rem 6rem;
+            background: #1a2332;
+            z-index: 10;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .stats-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-header {
+            margin-bottom: 2rem;
+        }
+
+        .stats-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .stats-divider {
+            width: 80px;
+            height: 4px;
+            background: rgb(149, 35, 1);
+            margin: 0 auto 1rem;
+            border-radius: 2px;
+        }
+
+        .stats-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            padding: 1.5rem 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            border-radius: 0.75rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(252, 75, 21, 0.3), transparent);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(252, 75, 21, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(252, 75, 21, 0.3);
+            border-radius: 50%;
+            top: 10px;
+            right: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .stat-card:hover::after {
+            background: rgb(149, 35, 1);
+        }
+
+        .stat-icon {
+            color: rgb(149, 35, 1);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            opacity: 0.8;
+            font-size: 1.2rem;
+        }
+
+        .stat-number {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: rgb(149, 35, 1);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-title {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .stat-progress {
+            width: 100%;
+            height: 3px;
+            background: rgba(71, 85, 105, 0.3);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .stat-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, rgb(149, 35, 1), rgb(149, 35, 1));
+            border-radius: 2px;
+            width: 0%;
+            transition: width 2s ease-out 0.5s;
+        }
+
+        .stat-card:hover .stat-progress-bar {
+            width: 100%;
+        }
+
+        .stats-cta {
+            margin-top: 2rem;
+        }
+
+        .btn-stats-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 2rem;
+            background: rgb(149, 35, 1);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-stats-cta:hover {
+            background: rgb(149, 35, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(252, 75, 21, 0.3);
+        }
+
+        /* New Mission Section */
+
+     .mission-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Background decorative elements */
+        .mission-section::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(239, 68, 68, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .mission-section::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 15%;
+            width: 150px;
+            height: 150px;
+            border: 2px solid rgba(239, 68, 68, 0.08);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .decorative-circles {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .circle {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(239, 68, 68, 0.2);
+            border-radius: 50%;
+            margin: 20px 0;
+            position: relative;
+            animation: pulse 4s infinite;
+        }
+
+        .circle:nth-child(2) { animation-delay: 1s; }
+        .circle:nth-child(3) { animation-delay: 2s; }
+
+        .circle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: rgb(149, 35, 1);
+            border-radius: 50%;
+        }
+
+        .foundation-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: rgb(149, 35, 1);
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mission-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mission-header {
+            margin-bottom: 50px;
+        }
+
+        .mission-title {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .mission-title span {
+            color: rgb(149, 35, 1);
+        }
+
+        .mission-subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .mission-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 60px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 50px;
+            padding: 6px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(239, 68, 68, 0.1);
+        }
+
+        .mission-tab {
+            padding: 12px 30px;
+            text-decoration: none;
+            color: #94a3b8;
+            font-weight: 500;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mission-tab.active {
+            background: rgb(149, 35, 1);
+            color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .mission-tab:hover:not(.active) {
+            color: white;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .mission-text-container {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            position: relative;
+        }
+
+        .achievement-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            color: rgb(149, 35, 1);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .achievement-icon {
+            width: 20px;
+            height: 20px;
+            background: rgb(149, 35, 1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .achievement-icon::before {
+            content: '★';
+            color: white;
+            font-size: 12px;
+        }
+
+        .mission-text {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .mission-cta {
+            margin-top: 40px;
+        }
+
+        .btn-mission-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgb(149, 35, 1), rgb(149, 35, 1));
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-mission-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+            background: linear-gradient(135deg, rgb(149, 35, 1), rgb(149, 35, 1));
+        }
+
+        .excellence-badge {
+            position: absolute;
+            bottom: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 6px 20px;
+            border-radius: 15px;
+            color: #94a3b8;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-1 {
+            animation: fadeIn 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-2 {
+            animation: fadeIn 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-3 {
+            animation: fadeIn 1s ease-out 0.9s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mission-title {
+                font-size: 2.5rem;
+            }
+            
+            .mission-subtitle {
+                font-size: 1rem;
+            }
+            
+            .mission-tabs {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .decorative-circles {
+                display: none;
+            }
+            
+            .mission-section::before,
+            .mission-section::after {
+                display: none;
+            }
+        }   
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .animate-fade-in-delay-1 {
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .animate-fade-in-delay-2 {
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .animate-fade-in-delay-3 {
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .floating-circle {
+                display: none;
+            }
+
+            .accessibility-panel {
+                right: 0.5rem;
+                left: 0.5rem;
+                min-width: auto;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .mission-tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Expertise Section Styles */
+        .expertise-section {
+            padding: 100px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .expertise-content {
+            text-align: center;
+        }
+
+        .excellence-badge-top {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: #ef4444;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .expertise-header {
+            margin-bottom: 60px;
+        }
+
+        .expertise-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .expertise-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #ef4444;
+            border-radius: 2px;
+        }
+
+        .expertise-subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .expertise-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: left;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.5), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .expertise-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(239, 68, 68, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: #ef4444;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .card-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .card-rating {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+            margin-top: 25px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .projects {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(51, 65, 85, 0.5);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .learn-more {
+            color: #ef4444;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .learn-more:hover {
+            color: #dc2626;
+            gap: 8px;
+        }
+
+        .expertise-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .btn-start-project {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .btn-start-project:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+
+        .cta-subtitle {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Responsive Design for Expertise Section */
+        @media (max-width: 768px) {
+            .expertise-title {
+                font-size: 2.5rem;
+            }
+            
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .expertise-card {
+                padding: 20px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .card-rating {
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+            
+            .card-category {
+                position: relative;
+                top: auto;
+                right: auto;
+                order: -1;
+            }
+        }
+
+        /* Values Section Styles */
+.values-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0a0f1c 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.values-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(239, 68, 68, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.values-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.values-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.values-badge-text {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: #ef4444;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.values-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.values-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.values-subtitle {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.value-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: left;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--card-color, #ef4444), transparent);
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.value-card:hover::before {
+    opacity: 1;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--card-color, #ef4444);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--card-color-alpha, rgba(239, 68, 68, 0.1));
+}
+
+.value-card:nth-child(1) {
+    --card-color: #f97316;
+    --card-color-alpha: rgba(249, 115, 22, 0.1);
+}
+
+.value-card:nth-child(2) {
+    --card-color: #10b981;
+    --card-color-alpha: rgba(16, 185, 129, 0.1);
+}
+
+.value-card:nth-child(3) {
+    --card-color: #ec4899;
+    --card-color-alpha: rgba(236, 72, 153, 0.1);
+}
+
+.value-card:nth-child(4) {
+    --card-color: #8b5cf6;
+    --card-color-alpha: rgba(139, 92, 246, 0.1);
+}
+
+.value-card:nth-child(5) {
+    --card-color: #06b6d4;
+    --card-color-alpha: rgba(6, 182, 212, 0.1);
+}
+
+.value-card:nth-child(6) {
+    --card-color: #3b82f6;
+    --card-color-alpha: rgba(59, 130, 246, 0.1);
+}
+
+.value-card:nth-child(7) {
+    --card-color: #ef4444;
+    --card-color-alpha: rgba(239, 68, 68, 0.1);
+}
+
+.value-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    background: var(--card-color, #ef4444);
+    color: white;
+    position: relative;
+}
+
+.value-icon::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, var(--card-color, #ef4444), transparent, var(--card-color, #ef4444));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+.value-card:hover .value-icon::after {
+    opacity: 0.3;
+}
+
+.value-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.value-description {
+    font-size: 1rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+.values-cta {
+    text-align: center;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.values-cta-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.values-cta-subtitle {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 32px;
+}
+
+.btn-values-cta {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-values-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* Responsive Design for Values Section */
+@media (max-width: 768px) {
+    .values-section {
+        padding: 60px 20px;
+    }
+    
+    .values-title {
+        font-size: 2.5rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-bottom: 60px;
+    }
+    
+    .value-card {
+        padding: 24px 20px;
+    }
+    
+    .values-cta {
+        padding: 24px;
+    }
+}
+
+/* General styling for the section */
+.final-cta-section {
+    position: relative;
+    padding: 6rem 2rem;
+    background: #111827; /* Dark background color */
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Background decorations */
+.final-cta-decorations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.decoration-circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(252, 75, 21, 0.2); /* Orange color with transparency */
+    border-radius: 50%;
+    animation: pulse 4s infinite;
+}
+
+/* Specific positions and delays for each decoration element, as seen in the image */
+.decoration-circle:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.decoration-circle:nth-child(2) { top: 30%; right: 10%; animation-delay: 1s; }
+.decoration-circle:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 2s; }
+.decoration-circle:nth-child(4) { bottom: 5%; right: 5%; animation-delay: 3s; }
+
+/* Keyframe animation for the pulsing effect */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* Main content container */
+.final-cta-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* The "Let's Create Together" badge */
+.final-cta-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid rgba(252, 75, 21, 0.4); /* Border color matching the image */
+    background: rgba(252, 75, 21, 0.1); /* Transparent background */
+    color:  rgb(149, 35, 1);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+/* Main title styling */
+.final-cta-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.final-cta-title span {
+    background: linear-gradient(135deg,  rgb(149, 35, 1) 0%,  rgb(149, 35, 1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Description text */
+.final-cta-description {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+/* CTA buttons container */
+.final-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+/* Primary button (Start Your Project) */
+.btn-primary-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background:  rgb(149, 35, 1); /* Solid orange background */
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-cta:hover {
+    background:  rgb(149, 35, 1); /* Slightly darker orange on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(252, 75, 21, 0.3);
+}
+
+/* Secondary button (View Our Work) */
+.btn-secondary-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-cta:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Stats grid layout */
+.final-stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* Individual stat item */
+.final-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.final-stat-icon {
+    color:  rgb(149, 35, 1);
+    opacity: 0.8;
+}
+
+.final-stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.final-stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Trusted badge at the bottom */
+.trusted-badge {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+}
+
+.trusted-text {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .final-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .final-stats-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+/* Final CTA Section */
+.team-section {
+    position: relative;
+    padding: 6rem 2rem;
+    background: #111827;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    /* Add the background image and floating elements as needed to match the full page design */
+}
+
+.team-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.team-header {
+    margin-bottom: 4rem;
+}
+
+.team-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.team-subtitle {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.team-roles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 6rem;
+    text-align: left;
+}
+
+.role-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.role-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fc4b15;
+    margin-bottom: 0.5rem;
+}
+
+.member-count {
+    color: #94a3b8;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.role-description {
+    font-size: 0.9rem;
+    color: #e5e7eb;
+    margin-bottom: 1.5rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: rgba(252, 75, 21, 0.1);
+    color: #fc4b15;
+    border: 1px solid rgba(252, 75, 21, 0.4);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.horizontal-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stat-item svg {
+    color: #fc4b15;
+    width: 32px;
+    height: 32px;
+}
+
+.stat-number {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: white;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-text {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer-label {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.footer-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e5e7eb;
+}
+
+    </style>
+</head>
+<body class="text-normal">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div>
+                <a href="/" class="logo">Ensys</a>
+                <div class="tagline">Innovation • Growth • Excellence</div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-link active">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4L13.5 7H7V9H13.5L15 12L21 9Z"/>
+                    </svg>
+                    About
+                </a>
+                <a href="#" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14,2A8,8 0 0,0 6,10A8,8 0 0,0 14,18A8,8 0 0,0 22,10H20C20,13.32 17.32,16 14,16A6,6 0 0,1 8,10A6,6 0 0,1 14,4C14.6,4 15.12,4.1 15.66,4.28L17.42,2.52C16.27,2.18 15.16,2 14,2M20.71,7.04C20.29,7.04 19.87,7.1 19.47,7.22L18.04,5.79C18.75,5.5 19.5,5.34 20.29,5.34C21.64,5.34 22.83,5.9 23.69,6.75L22.27,8.17C21.82,7.72 21.32,7.04 20.71,7.04Z"/>
+                    </svg>
+                    Services
+                </a>
+                <a href="#" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18,15H16V17H18M18,11H16V13H18M20,19H12V17H14V15H12V13H14V11H12V9H20M10,7H8V5H10M10,11H8V9H10M10,15H8V13H10M10,19H8V17H10M6,7H4V5H6M6,11H4V9H6M6,15H4V13H6M6,19H4V17H6M12,7V3H2V21H22V7H12Z"/>
+                    </svg>
+                    Portfolio
+                </a>
+                <a href="#" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                    </svg>
+                    Blog
+                </a>
+                <a href="#" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20Z"/>
+                    </svg>
+                    FAQs
+                </a>
+            </div>
+
+            <div class="nav-controls">
+                <button id="accessibilityBtn" class="control-btn" title="Accessibility Options">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z"/>
+                    </svg>
+                </button>
+                <a href="#" class="btn-contact">
+                    Contact us
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Accessibility Panel -->
+    <div id="accessibilityPanel" class="accessibility-panel">
+        <h3>Accessibility Options</h3>
+        <div class="option">
+            <label for="textSize">Text Size:</label>
+            <select id="textSize">
+                <option value="text-small">Small Text</option>
+                <option value="text-normal" selected>Normal Text</option>
+                <option value="text-large">Large Text</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Background Image -->
+        <div class="bg-image"></div>
+        <div class="bg-overlay"></div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-circle"></div>
+            <div class="floating-circle"></div>
+            <div class="floating-circle"></div>
+            <div class="floating-circle"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <!-- Location Badge -->
+            <div class="location-badge animate-fade-in">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                </svg>
+                Based in Kigali, Rwanda
+            </div>
+            
+            <!-- Main Title -->
+            <h1 class="hero-title animate-fade-in-delay-1">
+              About <span>Ensys</span>
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="hero-subtitle animate-fade-in-delay-2">
+                We're not just another tech agency. We're your digital transformation partners, committed to turning your vision into reality.
+            </p>
+            
+            <!-- CTA Button -->
+            <a href="#story" class="btn-primary animate-fade-in-delay-3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
+                </svg>
+                Watch Our Story
+            </a>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <a href="#stats" style="color: inherit; text-decoration: none;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="stats-content">
+            <!-- Section Title -->
+            <div class="stats-header">
+                <h2 class="stats-title animate-fade-in">Proven Excellence</h2>
+                <div class="stats-divider animate-fade-in-delay-1"></div>
+                <p class="stats-subtitle animate-fade-in-delay-2">
+                    Delivering exceptional results through innovative solutions and unwavering commitment to quality
+                </p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-container">
+                <div class="stat-card animate-fade-in">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big w-6 h-6 transition-colors duration-300" aria-hidden="true" style="color: rgb(149, 35, 1);"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    </div>
+                    <div class="stat-number" data-count="10">10+</div>
+                    <div class="stat-title">PROJECTS DELIVERED</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" data-width="85"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card animate-fade-in-delay-1">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-6 h-6 transition-colors duration-300" aria-hidden="true" style="color: rgb(149, 35, 1);"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                    </div>
+                    <div class="stat-number" data-count="5">5+</div>
+                    <div class="stat-title">YEARS EXPERIENCE</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" data-width="75"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card animate-fade-in-delay-2">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-6 h-6 transition-colors duration-300" aria-hidden="true" style="color: rgb(149, 35, 1);"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    </div>
+                    <div class="stat-number" data-count="98">98%</div>
+                    <div class="stat-title">CLIENT SATISFACTION</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" data-width="98"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card animate-fade-in-delay-3">
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe w-6 h-6 transition-colors duration-300" aria-hidden="true" style="color: rgb(149, 35, 1);"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                    </div>
+                    <div class="stat-number" data-count="24">24/7</div>
+                    <div class="stat-title">GLOBAL SUPPORT</div>
+                    <div class="stat-progress">
+                        <div class="stat-progress-bar" data-width="100"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="stats-cta animate-fade-in-delay-3">
+                <a href="#contact" class="btn-stats-cta">
+                    Start Your Project
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+  <div class="foundation-badge">FOUNDATION</div>
+    
+    <section class="mission-section">
+        <div class="decorative-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        
+        <div class="mission-content">
+            <div class="mission-header">
+                <h2 class="mission-title animate-fade-in">Built on <span>Purpose</span></h2>
+                <p class="mission-subtitle animate-fade-in-delay-1">The principles and vision driving our mission to transform Africa's digital landscape</p>
+            </div>
+            
+            <div class="mission-tabs">
+                <a href="#" class="mission-tab active animate-fade-in-delay-2" onclick="switchTab(event, 'mission')">Mission</a>
+                <a href="#" class="mission-tab animate-fade-in-delay-2" onclick="switchTab(event, 'vision')">Vision</a>
+                <a href="#" class="mission-tab animate-fade-in-delay-2" onclick="switchTab(event, 'values')">Values</a>
+            </div>
+            
+            <div class="mission-text-container">
+                <div class="achievement-container animate-fade-in-delay-3">
+                    <span class="achievement-icon"></span>
+                    <span class="achievement-text">ACHIEVEMENT</span>
+                </div>
+                <div class="achievement-container animate-fade-in-delay-3" style="background: rgba(34, 197, 94, 0.1); border-color: rgba(34, 197, 94, 0.3); color: #22c55e;">
+                    <span class="achievement-icon" style="background: #22c55e;"></span>
+                    <span class="achievement-text">500+ Organizations Empowered</span>
+                </div>
+                
+                <h3 class="section-title animate-fade-in-delay-3">Our Mission</h3>
+                <p class="mission-text animate-fade-in-delay-3" id="content-text">
+                    To democratize access to high-quality digital solutions by providing affordable, scalable, and innovative technology services to startups, NGOs, and SMEs across Africa and beyond. We believe that every organization, regardless of size, deserves world-class digital products that drive growth and impact.
+                </p>
+                
+                <div class="excellence-badge">EXCELLENCE DRIVEN</div>
+            </div>
+            
+            <div class="mission-cta">
+                <a href="#discover" class="btn-mission-cta animate-fade-in-delay-3">Discover Our Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Expertise Section -->
+    <section class="expertise-section">
+        <div class="expertise-content">
+            <div class="expertise-header">
+                <div class="excellence-badge-top">TECHNICAL EXCELLENCE</div>
+                <h2 class="expertise-title">Our Expertise</h2>
+                <p class="expertise-subtitle">Comprehensive digital solutions engineered to accelerate your business growth and market dominance</p>
+            </div>
+            
+            <div class="expertise-grid">
+                <!-- Backend Development -->
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <div class="card-icon backend-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 3L4 7L8 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 3L20 7L16 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 21L12 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">Development</div>
+                        <div class="card-rating">
+                            <span class="stars">★ 4.9</span>
+                            <span class="projects">30+ Projects</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Backend Development</h3>
+                    <p class="card-description">Build fast and scalable server-side systems that power your applications with enterprise-grade reliability, security, and performance optimization.</p>
+                    <div class="card-technologies">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">+8 more</span>
+                    </div>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <!-- Frontend Development -->
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <div class="card-icon frontend-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M2 8H22" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="6" cy="6" r="1" fill="currentColor"/>
+                                <circle cx="9" cy="6" r="1" fill="currentColor"/>
+                                <circle cx="12" cy="6" r="1" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">Development</div>
+                        <div class="card-rating">
+                            <span class="stars">★ 4.8</span>
+                            <span class="projects">50+ Projects</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Frontend Development</h3>
+                    <p class="card-description">Create and implement modern user interfaces that provide seamless user experiences with modern frameworks and cutting-edge technologies.</p>
+                    <div class="card-technologies">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">+8 more</span>
+                    </div>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <!-- Database Management -->
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <div class="card-icon database-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <ellipse cx="12" cy="5" rx="9" ry="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 12C21 13.66 16.97 15 12 15S3 13.66 3 12" stroke="currentColor" stroke-width="2"/>
+                                <path d="M3 5V19C3 20.66 7.03 22 12 22S21 20.66 21 19V5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">Development</div>
+                        <div class="card-rating">
+                            <span class="stars">★ 4.9</span>
+                            <span class="projects">40+ Projects</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Database Management</h3>
+                    <p class="card-description">Efficient data storage and retrieval solutions using modern databases for optimal performance, scalability, and data integrity.</p>
+                    <div class="card-technologies">
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">+8 more</span>
+                    </div>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <!-- Mobile Development -->
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <div class="card-icon mobile-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">Infrastructure</div>
+                        <div class="card-rating">
+                            <span class="stars">★ 4.7</span>
+                            <span class="projects">30+ Projects</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Mobile Development</h3>
+                    <p class="card-description">Design and create amazing mobile applications that deliver exceptional user experience across iOS and Android platforms.</p>
+                    <div class="card-technologies">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">iOS</span>
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">+8 more</span>
+                    </div>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <div class="card-icon design-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">Design</div>
+                        <div class="card-rating">
+                            <span class="stars">★ 4.8</span>
+                            <span class="projects">60+ Designs</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">UI/UX Design</h3>
+                    <p class="card-description">User-centered design solutions and interfaces with functionality, accessibility, and conversion optimization for authentic engagement.</p>
+                    <div class="card-technologies">
+                        <span class="tech-tag">Figma</span>
+                        <span class="tech-tag">Adobe XD</span>
+                        <span class="tech-tag">Prototyping</span>
+                        <span class="tech-tag">User Research</span>
+                        <span class="tech-tag">+8 more</span>
+                    </div>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <!-- USSD Development -->
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <div class="card-icon ussd-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 14S9.5 16 12 16S16 14 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="9" y1="9" x2="9.01" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="15" y1="9" x2="15.01" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">Specialized</div>
+                        <div class="card-rating">
+                            <span class="stars">★ 4.9</span>
+                            <span class="projects">5+ Solutions</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">USSD Development</h3>
+                    <p class="card-description">Interactive USSD applications for seamless communication and service delivery in low-bandwidth environments across Africa.</p>
+                    <div class="card-technologies">
+                        <span class="tech-tag">USSD Gateway</span>
+                        <span class="tech-tag">SMS Integration</span>
+                        <span class="tech-tag">Interactive Menus</span>
+                        <span class="tech-tag">Payment Integration</span>
+                        <span class="tech-tag">+8 more</span>
+                    </div>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <!-- Digital Strategy -->
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <div class="card-icon strategy-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3L21 21" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 3L3 21" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 3V21" stroke="currentColor" stroke-width="2"/>
+                                <path d="M3 12H21" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">Consulting</div>
+                        <div class="card-rating">
+                            <span class="stars">★ 4.8</span>
+                            <span class="projects">25+ Strategies</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Digital Strategy</h3>
+                    <p class="card-description">Strategic consulting and digital transformation services to help businesses grow through data-driven insights and modern technologies.</p>
+                    <div class="card-technologies">
+                        <span class="tech-tag">Analytics</span>
+                        <span class="tech-tag">SEO</span>
+                        <span class="tech-tag">Marketing</span>
+                        <span class="tech-tag">Consulting</span>
+                        <span class="tech-tag">+8 more</span>
+                    </div>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <!-- Graphic Design -->
+                <div class="expertise-card">
+                    <div class="card-header">
+                        <div class="card-icon graphic-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="card-category">Design</div>
+                        <div class="card-rating">
+                            <span class="stars">★ 4.7</span>
+                            <span class="projects">100+ Designs</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Graphic Design</h3>
+                    <p class="card-description">Creative visual solutions including branding, marketing materials, and digital graphics to enhance your brand identity and market presence.</p>
+                    <div class="card-technologies">
+                        <span class="tech-tag">Photoshop</span>
+                        <span class="tech-tag">Illustrator</span>
+                        <span class="tech-tag">Branding</span>
+                        <span class="tech-tag">Print Design</span>
+                        <span class="tech-tag">+8 more</span>
+                    </div>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="expertise-cta">
+                <button class="btn-start-project">Start Your Project</button>
+                <p class="cta-subtitle">Free consultation • No commitment required</p>
+            </div>
+        </div>
+    </section>
+
+      <!-- What Drives Us Section -->
+    <section class="values-section">
+        <div class="values-content">
+            <div class="values-header">
+                <div class="values-badge">
+                    <div class="values-badge-text">Our Core Values</div>
+                </div>
+                <h2 class="values-title">What Drives Us</h2>
+                <p class="values-subtitle">
+                    Core principles that shape our culture and guide every decision we make in our journey toward excellence.
+                </p>
+            </div>
+            
+            <div class="values-grid">
+                <!-- Innovation First -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Innovation First</h3>
+                    <p class="value-description">
+                        We constantly seek to deliver cutting-edge solutions that give our clients a competitive advantage in the digital landscape.
+                    </p>
+                </div>
+
+                <!-- Quality Focused -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Quality Focused</h3>
+                    <p class="value-description">
+                        Excellence is not negotiable. Every user interaction is crafted with meticulous attention to detail and industry standards.
+                    </p>
+                </div>
+
+                <!-- Client Partnership -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Client Partnership</h3>
+                    <p class="value-description">
+                        We believe in building long-term relationships, working as an extension of your team rather than just a service provider.
+                    </p>
+                </div>
+
+                <!-- Continuous Learning -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Continuous Learning</h3>
+                    <p class="value-description">
+                        We consistently stay ahead, embracing new technologies and methodologies to keep your projects and stay innovative.
+                    </p>
+                </div>
+
+                <!-- Team Empowerment -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21V19a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Team Empowerment</h3>
+                    <p class="value-description">
+                        We foster a collaborative environment where every team member is empowered to take ownership, share ideas, and grow personally and professionally.
+                    </p>
+                </div>
+
+                <!-- Global Impact -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Global Impact</h3>
+                    <p class="value-description">
+                        We build solutions that transcend borders, aiming to make meaningful contributions to regional development and global progress.
+                    </p>
+                </div>
+
+                <!-- Integrity & Transparency -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Integrity & Transparency</h3>
+                    <p class="value-description">
+                        We communicate openly, act ethically, and deliver what we promise — earning trust through every interaction.
+                    </p>
+                </div>
+            </div>
+
+            <div class="values-cta">
+                <h3 class="values-cta-title">Ready to work with us?</h3>
+                <p class="values-cta-subtitle">Let's discuss how our values align with your project goals</p>
+                <a href="#contact" class="btn-values-cta">
+                    Ready to work with us?
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+        <!-- Background decorations -->
+        <div class="final-cta-decorations">
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle"></div>
+        </div>
+        
+        <div class="final-cta-content">
+            <!-- Badge -->
+            <div class="final-cta-badge">
+                ✨ LET'S CREATE TOGETHER
+            </div>
+            
+            <!-- Main heading -->
+            <h2 class="final-cta-title">
+                Ready to <span>Transform</span><br>
+                Your Vision?
+            </h2>
+            
+            <!-- Description -->
+            <p class="final-cta-description">
+                Let's collaborate to transform your ideas into powerful digital solutions that drive 
+                measurable results and accelerate your business growth.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="final-cta-buttons">
+                <a href="#contact" class="btn-primary-cta">
+                    Start Your Project
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                    </svg>
+                </a>
+                <a href="#portfolio" class="btn-secondary-cta">
+                    View Our Work
+                </a>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="final-stats-grid">
+                <div class="final-stat-item">
+                    <div class="final-stat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="final-stat-number">135+</div>
+                    <div class="final-stat-label">Projects Delivered</div>
+                </div>
+                
+                <div class="final-stat-item">
+                    <div class="final-stat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="final-stat-number">98%</div>
+                    <div class="final-stat-label">Client Satisfaction</div>
+                </div>
+                
+                <div class="final-stat-item">
+                    <div class="final-stat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="final-stat-number">24/7</div>
+                    <div class="final-stat-label">Support Available</div>
+                </div>
+            </div>
+            
+            <!-- Trusted badge -->
+            <div class="trusted-badge">
+                <div class="trusted-text">Trusted by Industry Leaders</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+    <div class="team-container">
+        <div class="team-header">
+            <h2 class="team-title">Meet the Visionaries</h2>
+            <p class="team-subtitle">
+                A diverse collection of passionate professionals united by our mission to create
+                exceptional digital experiences that transform businesses across Africa
+            </p>
+        </div>
+
+        <div class="team-roles-container">
+            <div class="role-card">
+                <h3 class="role-title">Developers <span class="member-count">5+</span></h3>
+                <p class="role-description">
+                    Full-stack developers, mobile specialists, and backend architects who turn complex ideas into elegant solutions.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Scalability</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Mobile Development</span>
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">APIs</span>
+                    <span class="skill-tag">Databases</span>
+                    <span class="skill-tag">DevOps</span>
+                    <span class="skill-tag">Web Security</span>
+                </div>
+            </div>
+
+            <div class="role-card">
+                <h3 class="role-title">Designers <span class="member-count">5+</span></h3>
+                <p class="role-description">
+                    Creative minds who craft beautiful, intuitive user experiences that engage and convert.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">UX/UI Design</span>
+                    <span class="skill-tag">Brand Strategy</span>
+                    <span class="skill-tag">Motion Graphics</span>
+                    <span class="skill-tag">User Research</span>
+                    <span class="skill-tag">Prototyping</span>
+                    <span class="skill-tag">Accessibility Design</span>
+                </div>
+            </div>
+
+            <div class="role-card">
+                <h3 class="role-title">Strategists <span class="member-count">5+</span></h3>
+                <p class="role-description">
+                    Strategic thinkers who align technology solutions with business objectives for maximum impact.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Digital Strategy</span>
+                    <span class="skill-tag">Market Analysis</span>
+                    <span class="skill-tag">Product Planning</span>
+                    <span class="skill-tag">Consulting</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="horizontal-stats">
+            <div class="stat-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 17V19H2V17C2 14.21 7.37 12.5 10.5 12.5C11.33 12.5 12.17 12.62 13 12.86M12 2C10.66 2 9.5 3.34 9.5 5C9.5 6.66 10.66 8 12 8C13.34 8 14.5 6.66 14.5 5C14.5 3.34 13.34 2 12 2M16.5 10C14.43 10 12.75 11.66 12.75 13.75C12.75 15.84 14.43 17.5 16.5 17.5C18.57 17.5 20.25 15.84 20.25 13.75C20.25 11.66 18.57 10 16.5 10Z" />
+                </svg>
+                <div class="stat-number">25+</div>
+                <div class="stat-label">TEAM MEMBERS</div>
+            </div>
+            <div class="stat-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20Z" />
+                </svg>
+                <div class="stat-number">5+</div>
+                <div class="stat-label">COUNTRIES SERVED</div>
+            </div>
+            <div class="stat-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,2A10,10 0 0,0 2,12C2,16.97 6.03,21 11,22V20C7.13,19.33 4,16.03 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12C20,16.03 16.87,19.33 13,20V22C17.97,21 22,16.97 22,12A10,10 0 0,0 12,2Z" />
+                </svg>
+                <div class="stat-number">5+</div>
+                <div class="stat-label">YEARS EXPERIENCE</div>
+            </div>
+            <div class="stat-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18,13.5C18.83,13.5 19.5,12.83 19.5,12C19.5,11.17 18.83,10.5 18,10.5C17.17,10.5 16.5,11.17 16.5,12C16.5,12.83 17.17,13.5 18,13.5M16.4,7.6L14.7,6.4C14.2,6.1 13.9,5.7 13.7,5.1L13.1,3.4C13,2.9 12.6,2.5 12.1,2.5H11.9C11.4,2.5 11,2.9 10.9,3.4L10.3,5.1C10.1,5.7 9.8,6.1 9.3,6.4L7.6,7.6C7.1,7.9 6.8,8.4 6.8,9C6.8,9.6 7.1,10.1 7.6,10.4L9.3,11.6C9.8,11.9 10.1,12.3 10.3,12.9L10.9,14.6C11,15.1 11.4,15.5 11.9,15.5H12.1C12.6,15.5 13,15.1 13.1,14.6L13.7,12.9C13.9,12.3 14.2,11.9 14.7,11.6L16.4,10.4C16.9,10.1 17.2,9.6 17.2,9C17.2,8.4 16.9,7.9 16.4,7.6M12,20C10.2,20 8.6,19.3 7.3,18.2L5.8,19.8C6.9,20.8 8.4,21.5 10.1,21.9L9.6,23.6C9.5,24.1 9,24.5 8.5,24.5H8.3C7.8,24.5 7.3,24.1 7.2,23.6L6.7,22.1C5.3,21.2 4,20.2 2.8,19.2L1.5,20.5C1.1,20.9 0.5,20.9 0.1,20.5C-0.3,20.1 -0.3,19.5 0.1,19.1L1.4,17.8C0.3,16.3 -0.2,14.7 -0.2,13L0.2,11.2C0.3,10.7 0.7,10.3 1.2,10.3H1.4C1.9,10.3 2.3,10.7 2.4,11.2L2.8,13C3,14.1 3.5,15.2 4.1,16.2L2.8,17.5C2.4,17.9 2.4,18.5 2.8,18.9C3.2,19.3 3.8,19.3 4.2,18.9L5.5,17.6C6.7,18.4 8,19 9.3,19.6L8.9,21.1C8.8,21.6 9.2,22 9.7,22H9.9C10.4,22 10.8,21.6 10.9,21.1L11.3,19.4C12,19.5 12.8,19.6 13.5,19.6L14,21.1C14.1,21.6 14.5,22 15,22H15.2C15.7,22 16.1,21.6 16.2,21.1L16.6,19.4C18.1,19.2 19.5,18.5 20.8,17.7L22.1,19C22.5,19.4 22.5,20 22.1,20.4C21.7,20.8 21.1,20.8 20.7,20.4L19.4,19.1C18.3,20.2 16.8,20.8 15.1,21.2L15.6,22.9C15.7,23.4 15.3,23.8 14.8,23.8H14.6C14.1,23.8 13.7,23.4 13.6,22.9L13.2,21.4C12.8,21.5 12.4,21.5 12,21.5Z" />
+                </svg>
+                <div class="stat-number">☕</div>
+                <div class="stat-label">COFFEE CONSUMED</div>
+            </div>
+        </div>
+
+        <div class="footer-text">
+            <span class="footer-label">UNITED BY PURPOSE</span>
+            <p>Every team member brings a unique expertise and perspective, but we're all driven by the same mission: creating digital solutions that make a meaningful impact.</p>
+        </div>
+    </div>
+</section>
+
+   <script>
+    // ==============================
+    // Mission / Vision / Values Tabs
+    // ==============================
+    const tabContent = {
+        mission: {
+            title: "Our Mission",
+            text: "To democratize access to high-quality digital solutions by providing affordable, scalable, and innovative technology services to startups, NGOs, and SMEs across Africa and beyond. We believe that every organization, regardless of size, deserves world-class digital products that drive growth and impact."
+        },
+        vision: {
+            title: "Our Vision",
+            text: "To become Africa's leading technology partner, empowering organizations across the continent with cutting-edge digital solutions. We envision a future where every African business, from the smallest startup to the largest enterprise, has access to world-class technology that drives innovation, growth, and positive impact in their communities."
+        },
+        values: {
+            title: "Our Values",
+            text: "Excellence in everything we do, Innovation that drives meaningful change, Integrity as the foundation of all our relationships, Inclusivity that ensures technology serves everyone, and Impact that creates lasting positive change. These core principles guide our decisions and shape our culture as we work towards transforming Africa's digital landscape."
+        }
+    };
+
+    function switchTab(event, tabName) {
+        event.preventDefault();
+        
+        // Update active tab
+        document.querySelectorAll('.mission-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // Update content
+        const content = tabContent[tabName];
+        document.querySelector('.section-title').textContent = content.title;
+        document.querySelector('#content-text').textContent = content.text;
+    }
+
+    // CTA Button Smooth Scroll
+    document.querySelector('.btn-mission-cta').addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Navigating to discover section...');
+        // Add smooth scroll / navigation logic here
+    });
+
+
+    // ==============================
+    // Accessibility Panel
+    // ==============================
+    const accessibilityBtn = document.getElementById('accessibilityBtn');
+    const accessibilityPanel = document.getElementById('accessibilityPanel');
+
+    accessibilityBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        accessibilityPanel.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
+            accessibilityPanel.classList.remove('show');
+        }
+    });
+
+    // Text size functionality
+    const textSizeSelect = document.getElementById('textSize');
+    textSizeSelect.addEventListener('change', (e) => {
+        const newSize = e.target.value;
+        document.body.classList.remove('text-small', 'text-normal', 'text-large');
+        document.body.classList.add(newSize);
+        localStorage.setItem('textSize', newSize);
+    });
+
+    // Load saved text size
+    const savedTextSize = localStorage.getItem('textSize') || 'text-normal';
+    textSizeSelect.value = savedTextSize;
+    document.body.classList.remove('text-small', 'text-normal', 'text-large');
+    document.body.classList.add(savedTextSize);
+
+
+    // ==============================
+    // Stats / Counters / Progress Bars
+    // ==============================
+    function animateCounter(element, target, suffix = '+') {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            
+            if (suffix === '%') {
+                element.textContent = Math.floor(current) + suffix;
+            } else if (suffix === '/7') {
+                element.textContent = '24/7';
+            } else {
+                element.textContent = Math.floor(current) + suffix;
+            }
+        }, 20);
+    }
+
+    function animateProgressBar(bar, targetWidth) {
+        setTimeout(() => {
+            bar.style.width = targetWidth + '%';
+        }, 500);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumber = entry.target.querySelector('.stat-number');
+                const progressBar = entry.target.querySelector('.stat-progress-bar');
+                const count = statNumber?.dataset.count;
+                const progressWidth = progressBar?.dataset.width;
+                
+                if (count) {
+                    if (statNumber.textContent.includes('%')) {
+                        animateCounter(statNumber, parseInt(count), '%');
+                    } else if (statNumber.textContent.includes('/7')) {
+                        animateCounter(statNumber, parseInt(count), '/7');
+                    } else {
+                        animateCounter(statNumber, parseInt(count), '+');
+                    }
+                }
+
+                if (progressWidth) {
+                    animateProgressBar(progressBar, parseInt(progressWidth));
+                }
+                
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-card').forEach(card => {
+        statsObserver.observe(card);
+    });
+
+
+    // ==============================
+    // Smooth Scroll for Links
+    // ==============================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+
+    // ==============================
+    // Navbar Scroll Effect
+    // ==============================
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(17, 24, 39, 0.95)';
+        } else {
+            navbar.style.background = 'rgba(17, 24, 39, 0.8)';
+        }
+    });
+
+
+    // ==============================
+    // Animate on Scroll
+    // ==============================
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-fade-in, .animate-fade-in-delay-1, .animate-fade-in-delay-2, .animate-fade-in-delay-3')
+        .forEach(el => observer.observe(el));
+
+
+    // ==============================
+    // Parallax Effect
+    // ==============================
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const bgImage = document.querySelector('.bg-image');
+        if (bgImage) {
+            const rate = scrolled * -0.5;
+            bgImage.style.transform = `translateY(${rate}px)`;
+        }
+    });
+
+
+    // ==============================
+    // Mobile Menu
+    // ==============================
+    const navMenu = document.querySelector('.nav-menu');
+    const mobileMenuBtn = document.createElement('button');
+    mobileMenuBtn.className = 'control-btn mobile-menu-btn';
+    mobileMenuBtn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"/>
+        </svg>
+    `;
+    mobileMenuBtn.style.display = 'none';
+    document.querySelector('.nav-controls').insertBefore(mobileMenuBtn, document.querySelector('.btn-contact'));
+
+    function handleResize() {
+        if (window.innerWidth <= 768) {
+            mobileMenuBtn.style.display = 'flex';
+            navMenu.style.display = 'none';
+        } else {
+            mobileMenuBtn.style.display = 'none';
+            navMenu.style.display = 'flex';
+            navMenu.style.position = '';
+            navMenu.style.top = '';
+            navMenu.style.left = '';
+            navMenu.style.right = '';
+            navMenu.style.background = '';
+            navMenu.style.flexDirection = '';
+            navMenu.style.padding = '';
+            navMenu.style.borderTop = '';
+        }
+    }
+
+    mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (navMenu.style.display === 'none' || navMenu.style.display === '') {
+            navMenu.style.display = 'flex';
+            navMenu.style.position = 'absolute';
+            navMenu.style.top = '100%';
+            navMenu.style.left = '0';
+            navMenu.style.right = '0';
+            navMenu.style.background = 'rgba(17, 24, 39, 0.98)';
+            navMenu.style.flexDirection = 'column';
+            navMenu.style.padding = '2rem';
+            navMenu.style.borderTop = '1px solid rgba(255, 255, 255, 0.1)';
+        } else {
+            navMenu.style.display = 'none';
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.style.display = 'none';
+        }
+    });
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+</script>
+
+</body>
+</html>
